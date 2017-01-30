@@ -124,8 +124,10 @@ if (isset($this_port['adslLineCoding'])) {
         'adslAturCurrOutputPwr',
     ];
 
-    foreach ($adsl_tenth_oids as $oid) {
-        $this_port[$oid] = ($this_port[$oid] / 10);
+    if ($device['os'] != 'draytek') {
+        foreach ($adsl_tenth_oids as $oid) {
+            $this_port[$oid] = ($this_port[$oid] / 10);
+        }
     }
 
     if (dbFetchCell('SELECT COUNT(*) FROM `ports_adsl` WHERE `port_id` = ?', [$port_id]) == '0') {
