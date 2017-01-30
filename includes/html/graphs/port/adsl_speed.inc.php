@@ -10,6 +10,11 @@ $rrd_list[1]['filename'] = $rrd_filename;
 $rrd_list[1]['descr']    = 'Upstream';
 $rrd_list[1]['ds']       = 'AturChanCurrTxRate';
 
+if ($device['os'] === 'draytek') {
+    $rrd_list[0]['ds']       = 'AtucChanCurrTxRate';
+    $rrd_list[1]['ds']       = 'AturChanCurrTxRate';
+}
+
 $unit_text = 'Bits/sec';
 
 $units       = '';
